@@ -1,0 +1,92 @@
+lenthy kintu easy --------------------prefix and suffix sum concept--------------------------
+Given an integer array nums, return an array answer such that answer[i] is equal to the product of all the elements of nums except nums[i].
+
+The product of any prefix or suffix of nums is guaranteed to fit in a 32-bit integer.
+
+You must write an algorithm that runs in O(n) time and without using the division operation.
+
+ 
+
+Example 1:
+
+Input: nums = [1,2,3,4]
+Output: [24,12,8,6]
+Example 2:
+
+Input: nums = [-1,1,0,-3,3]
+Output: [0,0,9,0,0]
+ 
+
+Constraints:
+
+2 <= nums.length <= 105
+-30 <= nums[i] <= 30
+The product of any prefix or suffix of nums is guaranteed to fit in a 32-bit integer.
+ 
+
+Follow up: Can you solve the problem in O(1) extra space complexity? (The output array does not count as extra space for space complexity analysis.)
+
+
+
+--------------------------------------------Brute Force Approch----------------------------------------
+use two loop i th outer and jth inner multiply when (j!=i) and stor the product in the ans array
+====================code==========================
+vector<int> ans(nums.size(),1) // initialize with 1 
+
+for(int i=0;i<n;i++){
+  for(int j-0;j<nj++){
+    int pro = 1;
+      if(i!=j){
+              pro*=nums[j];
+      }
+  }
+ans.push_back(pro);
+}
+
+-------------------------------------Better Solution ----------------------------------------
+it's khown that we have to calculate product with out the current element 
+so if we count the product of all elements before and after that element 
+for example     1 2 3 4 
+prefix product  1 1 2 6
+suffix product  24 12 8 6
+
+then multiply these two array and stor in ans 
+ans[i] = pre[i]*suf[i]
+TC = 0(3n)
+SC = O(2n)//we does not count ans array size
+================================code===========================================
+class Solution {
+public:
+    vector<int> productExceptSelf(vector<int>& nums) {
+    vector<int>ans(nums.size(),1);
+    int n= nums.size();
+   vector<int>pre(n,1);
+   vector<int>suf(n,1);
+
+   for(int i=1;i<n;i++){
+    pre[i]=pre[i-1]*nums[i-1];
+   }
+
+   for(int i=n-2;i>=0;i--){
+    suf[i]=suf[i+1]*nums[i+1];
+   }
+
+   for(int i=0;i<n;i++){
+    ans[i]=pre[i]*suf[i];
+   }
+   return ans;
+    }
+};
+---------------------------Optimal Approach-----------------------------
+amra better approch a suffix and prefix alada kore calcutation kore tarpor ans a multiply korchi toh instade of this 
+amra jodi directly prefix ta ans a stor kori
+
+for(int i=1;i<n;i++) 
+    ans[i] = ans[i-1]*nums[i-1]
+then ans tar e suffix ber korbo
+int suf = 1;
+   for(int i=n-2;i>=0;i--){
+    suf = suf*nums[i+1];
+    ans[i] = ans[i]*suf;
+   }
+
