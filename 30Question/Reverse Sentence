@@ -1,0 +1,28 @@
+i/p: Java is fun
+o/p: fun is java
+
+first reverse the whole array 
+o/p-> nuf si avaJ
+
+run loop until it finds s[i] = ' '
+-> loop er vitore word += s[i]
+
+after loop reverse the word 
+
+then store the word in ans if word has any character
+store word in ans with space ans+= " "+word
+
+code:->
+        string ans = "";
+        reverse(s.begin(),s.end());
+        for(int i=0;i<s.length();i++){
+          string word = "";
+          while(i<s.length()&&s[i] != ' ')
+            {  
+              word+=s[i];i++;
+            }
+          reverse(word.begin(),word.end());
+          if(word.length()>0)
+            ans+=" "+word;
+        }
+return ans.substr(1);
