@@ -1,0 +1,27 @@
+1. 000000000111111111 (-2021120-) 222222222222222
+we have to sort the unsorted portion
+l=0,m=0 as there are no jaiga for l
+
+do all operation with m;
+
+there are three condition 
+1.when a[m] == 0 swap(m,l)m++;l++
+a[m]==2 only swap(r,m)r--, no need to m++ , this will handle by s1
+a[m]==1 m++;
+
+  int l = 0;
+        int m = 0;
+        int r = nums.size()-1;
+        while(m<=r){
+            if(nums[m]==2){
+                swap(nums[m],nums[r]);
+                r--;
+            }
+            else if(nums[m]==0){
+                swap(nums[l],nums[m]);
+                m++;l++;
+            }
+            else{
+                m++;
+            }
+        }
