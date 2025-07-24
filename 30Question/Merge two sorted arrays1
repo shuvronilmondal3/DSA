@@ -1,0 +1,19 @@
+Merge two sorted array 1
+Merge nums1 and nums2 into a single array sorted in non-decreasing order.
+code:->
+      int p1 = m-1;
+      int p2 = n-1;
+      int i = m+n-1;
+      while(p2>=0){
+        if(p1>=0 && nums1[p1]>nums2[p2]){
+            nums1[i--] = nums1[p1--]
+      }
+        else{
+            nums1[i--]=nums2[p2--];
+        }
+      }
+return nums1;
+
+Edge Case :-> 
+            if nums1 have only 1 element then  nums1[p1= -1]>nums2[p2] this condition will give runtie error 
+so to avoid that use if(p1>=0 && nums1[p1]>nums2[p2]) NOT ::: if( nums1[p1]>nums2[p2] && p1>=0 )
