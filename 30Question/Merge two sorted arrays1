@@ -1,5 +1,6 @@
 Merge two sorted array 1
 Merge nums1 and nums2 into a single array sorted in non-decreasing order.
+Note :: to sort sorted array on anything always start sort from the last with greater element 
 code:->
       int p1 = m-1;
       int p2 = n-1;
