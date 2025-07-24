@@ -1,0 +1,25 @@
+--------Rotate array right ---------------- 
+1 2 3 4 5 6 7 , k = 3
+ans = 5 6 7 1 2 3 4
+s1 - reverse the whole array -> 7 6 5 4 3 2 1
+s2 - reverse first k element -> 5 6 7 4 3 2 1 reverse(0,k-1)
+s3 - reverse last n-k element -> 5 6 7 1 2 3 4 ->reverse(k,n-1)
+
+code: ->
+        int n = nums.size();
+        k = k %n;
+     
+        reverse(nums,0,n-1);
+        reverse(nums,0,k-1);
+        reverse(nums,k,n-1);
+
+---------rotate array left ----------------
+1 2 3 4 5 6 7 , k = 4
+ans = 5 6 7 1 2 3 4
+s1 - reverse the whole array -> 7 6 5 4 3 2 1
+s2 - revser first n-k element -> 5 6 7 4 3 2 1 reverse(0,n-k-1) -1 because we want first k to revser n-k = 3 so the index should be 0 to 2->3 ele
+s3 - reverse k element -> 5 6 7 1 2 3 4 reverse(n-k,n-1)
+
+  reserse(a,0,n-1);
+  reserse(a,0,n-k-1);
+  reserse(a,n-k,n-1);
