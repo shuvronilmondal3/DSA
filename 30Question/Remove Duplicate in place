@@ -1,0 +1,20 @@
+think of a data structure which store only distinct value
+yes.. you guess it right , that is set 
+
+just traverse over the array and put all the array element in the set 
+return set size 
+## but but you also have to to pay attention that in question said that they need in place 
+
+just set se value uthao and first k element tak array me bhar do
+
+set<int> s;
+for(auto i :nums){
+  s.insert(i);
+}
+int k = s.size();
+int j =0;
+for(auto i : s){
+  nums[j++] = i;
+}
+return k;
+  
